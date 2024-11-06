@@ -26,12 +26,11 @@ jobs:
 
     - name: Run executable
       run: |
-        echo "Find and execute"
-        $exePath = Get-ChildItem -Path "build" -Filter "*.exe" -Recurse | Select-Object -First 1 -ExpandProperty FullName
-        if ($exePath) {
-          echo "Executable found: $exePath"
+        $exePath = "${{github.workspace}}/build/brightener.exe"
+        if (Test-Path $exePath) {
+          Write-Host "Executable found: $exePath"
           & $exePath
         } else {
-          echo "No Executable found."
+          Write-Host "No Executable found at $exePath"
         }
       shell: pwsh
