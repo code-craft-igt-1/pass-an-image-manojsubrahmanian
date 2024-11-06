@@ -26,7 +26,7 @@ jobs:
 
     - name: Run executable
       run: |
-        $exePath = "${{github.workspace}}/build/brightener.exe"
+        $exePath = "${{github.workspace}}/build/Release/brightener.exe"
         if (Test-Path $exePath) {
           Write-Host "Executable found: $exePath"
           & $exePath
